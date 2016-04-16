@@ -28,7 +28,7 @@ def train_model(filename):
     for label, book in label_dict.items():
         words = map(lambda s: str(s.decode("ascii", "ignore")), 
                     books[book]["words"])
-        for i, start in enumerate(range(1000)):#len(words)-100)):
+        for i, start in enumerate(range(len(words)-100)):
             text = get_section(words, start)
             text = stem_words(text, snowball_stemmer)
             text += get_ngrams(text, [2,3])
