@@ -34,6 +34,11 @@ class TextToBook(APIView):
         title, ms_start = predict_book_and_location(list_of_words)
 
         # api call to get product details from ASIN
+        try:
+            asin = BOOKS_MAP[title]
+        except KeyError:
+            # emergency valve
+            asin = 'B005FRGT44'
 
-        return Response({'ASIN': BOOKS_MAP[title],
+        return Response({'ASIN': asin,
                          'start_milliseconds': ms_start})
