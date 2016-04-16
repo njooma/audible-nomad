@@ -11,7 +11,8 @@ class TextToBook(APIView):
     """
 
     def post(self, request):
-        text = json.loads(request.data.get("text"))
+
+        text = request.data.get("text")
         for line in text:
             for word in line:
                 # TODO: Plug into the function
