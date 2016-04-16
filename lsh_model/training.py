@@ -28,7 +28,10 @@ def train_model(filename):
     for label, book in label_dict.items():
         words = map(lambda s: str(s.decode("ascii", "ignore")), 
                     books[book]["words"])
-        for i, start in enumerate(range(len(words)-100)):
+        nwords = len(words) / 10
+        for i, start in enumerate(range(nwords)):
+            if i % 1000 == 0:
+                print i
             text = get_section(words, start)
             text = stem_words(text, snowball_stemmer)
             text += get_ngrams(text, [2,3])
@@ -36,9 +39,11 @@ def train_model(filename):
             labels.append(label)
             location.append(i)
 
-    print "second pass..."
     n_samples = len(labels)
+    print "second pass...", n_samples
     for i in range(n_samples):
+        if i % 1000 == 0:
+            print i
         text = copy.deepcopy(corpus[i])
         label = labels[i]
         loc = location[i]
@@ -48,9 +53,11 @@ def train_model(filename):
         labels.append(label)
         location.append(loc)
 
-    print "third pass..."
     n_samples = len(labels)
+    print "third pass...", n_samples
     for i in range(n_samples):
+        if i % 1000 == 0:
+            print i
         text = copy.deepcopy(corpus[i])
         label = labels[i]
         loc = location[i]
