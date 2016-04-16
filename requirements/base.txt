@@ -34,7 +34,6 @@ ipywidgets==4.1.1
 jsonschema==2.5.1
 jupyter-client==4.2.2
 jupyter-core==4.1.0
-matplotlib==1.5.1
 meld3==1.0.2
 mistune==0.7.2
 nbconvert==4.2.0
@@ -55,7 +54,6 @@ pytz==2016.3
 pyzmq==15.2.0
 qtconsole==4.2.1
 requests==2.9.1
-scikit-image==0.12.3
 scikit-learn==0.17.1
 scipy==0.17.0
 simplegeneric==0.8.1
