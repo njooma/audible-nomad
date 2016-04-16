@@ -7,8 +7,16 @@ import random
 import re
 import string
 import copy
+import pickle
 from itertools import combinations
 
+
+serverbooks = "/home/ec2-user//audible-nomad/parsed_books.p"
+localbooks = "/Users/pymetrics/Audible/audible-nomad/parsed_books.p"
+
+with open(serverbooks, "rb") as fp:
+    books = pickle.load(fp)
+label_dict = {i: b for i, b in enumerate(books.keys())}
 
 
 
@@ -76,7 +84,6 @@ def get_location(predicted, train_locs, m=2):
 def distance_from_start(predicted, loc, train_locs):
     l = get_location(predicted, train_locs)
     return l - loc
-
 
 
 

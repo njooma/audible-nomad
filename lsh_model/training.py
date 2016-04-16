@@ -19,11 +19,6 @@ from .utils import *
 
 
 def train_model(filename):
-    print "loading books..."
-    with open(filename, "rb") as fp:
-        books = pickle.load(fp)
-
-    label_dict = {i: b for i, b in enumerate(books.keys())}
     snowball_stemmer = SnowballStemmer("english")
 
     print "first pass through data..."
@@ -33,7 +28,7 @@ def train_model(filename):
     for label, book in label_dict.items():
         words = map(lambda s: str(s.decode("ascii", "ignore")), 
                     books[book]["words"])
-        for i, start in enumerate(range(len(words)-100)):
+        for i, start in enumerate(range(1000)):#len(words)-100)):
             text = get_section(words, start)
             text = stem_words(text, snowball_stemmer)
             text += get_ngrams(text, [2,3])
@@ -80,13 +75,13 @@ def train_model(filename):
     model = {
         "fh": fh,
         "lsh": lshf,
-        "labels": labels,
-        "location": location
+        "labels": y,
+        "location": locs
     }
 
     print "saving..."
     with open("model.p", "wb") as fp:
-        pickle.dump(lshf, fp)
+        pickle.dump(model, fp)
 
 
 
