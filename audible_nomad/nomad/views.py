@@ -6,12 +6,14 @@ import random
 import json
 import requests
 
+from lsh_model.predict import predict_book_and_location
+
 BOOKS_MAP = {
     'robot_of_dawn-final':'B00KTEH7WQ',
     'ready_player_one-final': 'B005FRGT44'}
 
-def predict_book_and_location(list_of_words):
-    return random.choice(BOOKS_MAP.keys()), 0.0
+# def predict_book_and_location(list_of_words):
+#     return random.choice(BOOKS_MAP.keys()), 0.0
 
 
 # Create your views here.
