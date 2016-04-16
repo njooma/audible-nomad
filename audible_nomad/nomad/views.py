@@ -14,7 +14,7 @@ BOOKS_MAP = {
     'ready_player_one-final': 'B005CVWWJY'}
 
 def marks_function(list_of_words):
-    return random.choice(BOOKS_MAP.keys())
+    return random.choice(BOOKS_MAP.keys()), 0.0
 
 
 # Create your views here.
@@ -32,8 +32,9 @@ class TextToBook(APIView):
         print list_of_words
 
         # mark to get right book
-        title = marks_function(list_of_words)
+        title, ms_start = marks_function(list_of_words)
 
         # api call to get product details from ASIN
 
-        return Response({'ASIN': BOOKS_MAP[title]})
+        return Response({'ASIN': BOOKS_MAP[title],
+                         'start_milliseconds': ms_start})
