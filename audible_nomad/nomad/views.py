@@ -7,11 +7,8 @@ import json
 import requests
 
 BOOKS_MAP = {
-    'innovators-final': 'B00M9KA2ZM',
-    'Martian':'B00B5HO5XA',
-    'Beautiful-and-the-Damned': 'B00847O20A',
-    'robot_of_dawn-final':'B0024NP57Y',
-    'ready_player_one-final': 'B005CVWWJY'}
+    'robot_of_dawn-final':'B00KTEH7WQ',
+    'ready_player_one-final': 'B005FRGT44'}
 
 def marks_function(list_of_words):
     return random.choice(BOOKS_MAP.keys()), 0.0
