@@ -33,7 +33,7 @@ def train_model(filename):
     for label, book in label_dict.items():
         words = map(lambda s: str(s.decode("ascii", "ignore")), 
                     books[book]["words"])
-        for i, start in enumerate(range(2000)): #len(words)-100):
+        for i, start in enumerate(range(len(words)-100)):
             text = get_section(words, start)
             text = stem_words(text, snowball_stemmer)
             text += get_ngrams(text, [2,3])
@@ -52,6 +52,19 @@ def train_model(filename):
         corpus.append(text)
         labels.append(label)
         location.append(loc)
+
+    print "third pass..."
+    n_samples = len(labels)
+    for i in range(n_samples):
+        text = copy.deepcopy(corpus[i])
+        label = labels[i]
+        loc = location[i]
+        remove_words(text, random.randint(1, len(text)/4))
+        fudge_up_words(text, random.randint(1, len(text)/4))
+        corpus.append(text)
+        labels.append(label)
+        location.append(loc)
+
 
     print "creating features..."
     counts = corpus_to_counts(corpus)
