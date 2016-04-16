@@ -10,7 +10,7 @@ BOOKS_MAP = {
     'robot_of_dawn-final':'B00KTEH7WQ',
     'ready_player_one-final': 'B005FRGT44'}
 
-def marks_function(list_of_words):
+def predict_book_and_location(list_of_words):
     return random.choice(BOOKS_MAP.keys()), 0.0
 
 
@@ -29,7 +29,7 @@ class TextToBook(APIView):
         print list_of_words
 
         # mark to get right book
-        title, ms_start = marks_function(list_of_words)
+        title, ms_start = predict_book_and_location(list_of_words)
 
         # api call to get product details from ASIN
 
