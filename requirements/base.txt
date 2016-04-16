@@ -1,0 +1,10 @@
+argh==0.26.1
+Django==1.9.5
+django-supervisor==0.3.4
+djangorestframework==3.3.3
+meld3==1.0.2
+pathtools==0.1.2
+PyYAML==3.11
+supervisor==3.2.3
+uWSGI==2.0.12
+watchdog==0.8.3
